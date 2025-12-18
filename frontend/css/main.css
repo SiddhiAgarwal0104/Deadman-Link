@@ -1,0 +1,77 @@
+:root {
+  --bg-main: #0b0617;
+  --bg-card: rgba(255, 255, 255, 0.06);
+  --border-glass: rgba(255, 255, 255, 0.12);
+
+  --purple: #7b3fe4;
+  --pink: #ff4ecd;
+
+  --gradient-main: linear-gradient(135deg, #7b3fe4, #ff4ecd);
+  --gradient-glow: radial-gradient(circle at top, rgba(123,63,228,0.35), transparent 60%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+body {
+  background:
+    var(--gradient-glow),
+    radial-gradient(circle at bottom, rgba(255,78,205,0.25), transparent 55%),
+    var(--bg-main);
+  color: #fff;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 60px;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.logo span {
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* BUTTONS */
+.btn-primary {
+  background: var(--gradient-main);
+  padding: 12px 26px;
+  border-radius: 30px;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 0 25px rgba(255,78,205,0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  border: 1px solid var(--border-glass);
+  padding: 12px 26px;
+  border-radius: 30px;
+  color: #fff;
+  backdrop-filter: blur(10px);
+}

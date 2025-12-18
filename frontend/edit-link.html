@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Link | Deadman-Link</title>
+
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/forms.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2 class="logo">Deadman<span>Link</span></h2>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="create-link.html">Create Link</a>
+      <a href="my-links.html" class="active">My Links</a>
+      <a href="collections.html">Collections</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <header class="topbar">
+      <h1>Edit Link</h1>
+    </header>
+
+    <form class="form-card">
+
+      <!-- BASIC -->
+      <div class="form-group">
+        <label>Original URL</label>
+        <input
+          type="url"
+          value="https://example.com"
+          disabled
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Custom Slug</label>
+        <input
+          type="text"
+          value="secure-link"
+        />
+      </div>
+
+      <!-- ACCESS RULES -->
+      <h3 class="section-title">Access Rules</h3>
+
+      <div class="form-group inline">
+        <label>Expiry Date</label>
+        <input type="datetime-local" value="2025-12-31T23:59" />
+      </div>
+
+      <div class="form-group">
+        <label>Password Protection</label>
+        <input
+          type="password"
+          placeholder="Update password (optional)"
+        />
+      </div>
+
+      <div class="form-group inline">
+        <label>Access Limit</label>
+        <input type="number" value="5" />
+      </div>
+
+      <div class="form-group checkbox">
+        <input type="checkbox" checked />
+        <span>One-Time Access</span>
+      </div>
+
+      <!-- SCHEDULE -->
+      <h3 class="section-title">Scheduled Activation</h3>
+
+      <div class="form-group inline">
+        <label>Active From</label>
+        <input type="datetime-local" value="2025-12-20T10:00" />
+      </div>
+
+      <div class="form-group inline">
+        <label>Active Till</label>
+        <input type="datetime-local" value="2025-12-25T22:00" />
+      </div>
+
+      <!-- ACTION -->
+      <button class="btn-primary full-width">
+        Update Link
+      </button>
+
+    </form>
+
+  </main>
+</div>
+
+</body>
+</html>

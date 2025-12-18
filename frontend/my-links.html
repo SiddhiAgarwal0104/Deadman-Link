@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Links | Deadman-Link</title>
+
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/forms.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2 class="logo">Deadman<span>Link</span></h2>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="create-link.html">Create Link</a>
+      <a href="my-links.html" class="active">My Links</a>
+      <a href="collections.html">Collections</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <header class="topbar">
+      <h1>My Links</h1>
+      <a href="create-link.html" class="btn-primary">+ New Link</a>
+    </header>
+
+    <!-- LINKS LIST -->
+    <div class="table-card">
+
+      <div class="table-header">
+        <span>Short Link</span>
+        <span>Status</span>
+        <span>Clicks</span>
+        <span>Actions</span>
+      </div>
+
+      <div class="table-row">
+        <span>dmn.lk/secure123</span>
+        <span class="badge active">Active</span>
+        <span>124</span>
+        <span class="actions">
+          <button>Edit</button>
+          <button>Copy</button>
+          <button class="danger">Delete</button>
+        </span>
+      </div>
+
+      <div class="table-row">
+        <span>dmn.lk/event</span>
+        <span class="badge scheduled">Scheduled</span>
+        <span>0</span>
+        <span class="actions">
+          <button>Edit</button>
+          <button>Copy</button>
+          <button class="danger">Delete</button>
+        </span>
+      </div>
+
+      <div class="table-row">
+        <span>dmn.lk/oldlink</span>
+        <span class="badge expired">Expired</span>
+        <span>342</span>
+        <span class="actions">
+          <button>Edit</button>
+          <button>Copy</button>
+          <button class="danger">Delete</button>
+        </span>
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>

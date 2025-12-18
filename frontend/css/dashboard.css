@@ -1,0 +1,79 @@
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 240px;
+  background: linear-gradient(
+    180deg,
+    rgba(123,63,228,0.18),
+    rgba(0,0,0,0.6)
+  );
+  border-right: 1px solid var(--border-glass);
+  backdrop-filter: blur(20px);
+}
+
+.sidebar .logo {
+  margin-bottom: 40px;
+}
+
+.sidebar nav a {
+  display: block;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  color: #ccc;
+  border-radius: 10px;
+}
+
+.sidebar nav a.active,
+.sidebar nav a:hover {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+/* MAIN */
+.main-content {
+  flex: 1;
+  padding: 40px;
+}
+
+/* TOP BAR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+/* STATS */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.stat-card {
+  background: rgba(255,255,255,0.07);
+  padding: 25px;
+  border-radius: 18px;
+}
+
+.stat-card h3 {
+  color: #bbb;
+  margin-bottom: 10px;
+}
+
+.stat-card p {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* CONTENT BOX */
+.content-box {
+  margin-top: 40px;
+  background: rgba(255,255,255,0.06);
+  padding: 30px;
+  border-radius: 18px;
+}

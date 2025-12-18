@@ -1,0 +1,102 @@
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 100px 80px;
+  background: radial-gradient(circle at top, #2b1055, #0a0218);
+}
+
+.hero-text h1 {
+  font-size: 52px;
+  line-height: 1.2;
+}
+
+.hero-text span {
+  background: linear-gradient(90deg, #ff4ecd, #8f5bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-text p {
+  margin: 25px 0;
+  max-width: 500px;
+  color: #bbb;
+}
+
+.hero-actions a {
+  margin-right: 15px;
+}
+
+.hero-mock .mock-card {
+  width: 340px;
+  height: 230px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+}
+
+/* FEATURES */
+.features {
+  padding: 80px;
+  text-align: center;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background: rgba(255,255,255,0.06);
+  padding: 25px;
+  border-radius: 18px;
+  transition: 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255,255,255,0.1);
+}
+
+/* STEPS */
+.steps {
+  padding: 80px;
+  background: radial-gradient(circle at bottom, #1a0638, #0a0218);
+  text-align: center;
+}
+
+.step-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.step-card {
+  background: rgba(255,255,255,0.07);
+  padding: 25px 40px;
+  border-radius: 20px;
+}
+
+/* CTA */
+.cta {
+  padding: 80px;
+  text-align: center;
+}
+
+.cta h2 {
+  margin-bottom: 25px;
+}
+
+/* FOOTER */
+footer {
+  padding: 30px;
+  text-align: center;
+  color: #777;
+}
