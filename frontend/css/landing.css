@@ -10,12 +10,16 @@
   font-size: 52px;
   line-height: 1.2;
 }
-
 .hero-text span {
   background: linear-gradient(90deg, #ff4ecd, #8f5bff);
-  -webkit-background-clip: text;
+
+  background-clip: text;          /* standard */
+  -webkit-background-clip: text;  /* safari/chrome */
+
+  color: transparent;
   -webkit-text-fill-color: transparent;
 }
+
 
 .hero-text p {
   margin: 25px 0;

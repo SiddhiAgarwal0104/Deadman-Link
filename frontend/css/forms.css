@@ -73,9 +73,14 @@
   font-weight: 600;
 
   background: linear-gradient(90deg, #7b3fe4, #ff4ecd);
-  -webkit-background-clip: text;
+
+  background-clip: text;          /* standard */
+  -webkit-background-clip: text;  /* safari/chrome */
+
+  color: transparent;
   -webkit-text-fill-color: transparent;
 }
+
 
 /* ========== BUTTON HELPERS ========== */
 .full-width {
