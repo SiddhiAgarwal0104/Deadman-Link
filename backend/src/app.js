@@ -9,10 +9,8 @@ const collectionRoutes = require("./routes/collection.routes");
 
 // middlewares
 app.use(express.json());
-app.use(cors({
-  origin: process.env.CLIENT_URL,
-  credentials: true
-}));
+app.use(cors());
+
 
 app.use("/api/auth", authRoutes);
 

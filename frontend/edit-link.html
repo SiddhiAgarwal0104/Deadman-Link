@@ -104,3 +104,81 @@
 
 </body>
 </html>
+<script src="js/config.js"></script>
+<script>
+protectPage();
+
+const params = new URLSearchParams(window.location.search);
+const linkId = params.get("id");
+
+if (!linkId) {
+  alert("Invalid link");
+  window.location.href = "my-links.html";
+}
+
+const form = document.querySelector("form");
+const inputs = form.querySelectorAll("input");
+
+const originalUrlInput = inputs[0];
+const slugInput = inputs[1];
+const expiryInput = inputs[2];
+const passwordInput = inputs[3];
+const limitInput = inputs[4];
+const oneTimeCheckbox = inputs[5];
+
+// 🔹 LOAD LINK
+fetch(`${API_BASE}/link/${linkId}`, {
+  headers: {
+    Authorization: `Bearer ${getToken()}`
+  }
+})
+.then(async res => {
+  if (!res.ok) throw new Error("Link not found");
+  return res.json();
+})
+.then(link => {
+  originalUrlInput.value = link.originalUrl;
+  slugInput.value = link.slug || "";
+  expiryInput.value = link.expiresAt
+    ? link.expiresAt.slice(0, 16)
+    : "";
+  limitInput.value = link.maxClicks || "";
+  oneTimeCheckbox.checked = link.oneTime || false;
+})
+.catch(err => {
+  alert(err.message);
+  window.location.href = "my-links.html";
+});
+
+// 🔹 UPDATE LINK
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const payload = {
+    slug: slugInput.value || null,
+    expiresAt: expiryInput.value || null,
+    maxClicks: limitInput.value || null,
+    oneTime: oneTimeCheckbox.checked
+  };
+
+  if (passwordInput.value) {
+    payload.password = passwordInput.value;
+  }
+
+  const res = await fetch(`${API_BASE}/link/${linkId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getToken()}`
+    },
+    body: JSON.stringify(payload)
+  });
+
+  if (res.ok) {
+    alert("Link updated successfully");
+    window.location.href = "my-links.html";
+  } else {
+    alert("Failed to update link");
+  }
+});
+</script>

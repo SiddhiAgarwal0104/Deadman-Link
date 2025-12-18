@@ -16,9 +16,9 @@
     <h2>Welcome Back</h2>
     <p>Login to manage your smart links</p>
 
-    <form>
-      <input type="email" placeholder="Email" required />
-      <input type="password" placeholder="Password" required />
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
       <button class="btn-primary">Login</button>
     </form>
 
@@ -28,6 +28,31 @@
     </p>
   </div>
 </div>
+
+<script src="js/config.js"></script>
+<script>
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const res = await fetch(`${API_BASE}/auth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email: email.value,
+      password: password.value
+    })
+  });
+
+  const data = await res.json();
+
+  if (data.token) {
+    localStorage.setItem("token", data.token);
+    window.location.href = "dashboard.html";
+  } else {
+    alert(data.message || "Login failed");
+  }
+});
+</script>
 
 </body>
 </html>

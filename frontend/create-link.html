@@ -94,3 +94,51 @@
 
 </body>
 </html>
+<script src="js/config.js"></script>
+<script>
+protectPage();
+
+const form = document.querySelector("form");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const inputs = form.querySelectorAll("input");
+
+  const originalUrl = inputs[0].value;
+  const slug = inputs[1].value || null;
+  const expiresAt = inputs[2].value || null;
+  const password = inputs[3].value || null;
+  const maxClicks = inputs[4].value || null;
+  const oneTime = inputs[5].checked;
+
+  const payload = {
+    originalUrl,
+    slug,
+    expiresAt,
+    password,
+    maxClicks,
+    oneTime
+  };
+
+  console.log("Create payload:", payload); // 🔍 DEBUG
+
+  const res = await fetch(`${API_BASE}/link`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getToken()}`
+    },
+    body: JSON.stringify(payload)
+  });
+
+  const data = await res.json();
+
+  if (res.ok) {
+    alert("Link created");
+    window.location.href = "my-links.html";
+  } else {
+    alert(data.message || "Failed to create link");
+  }
+});
+</script>

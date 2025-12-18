@@ -39,43 +39,48 @@
 
       <div class="form-group">
         <label>Full Name</label>
-        <input type="text" value="Siddhi Agarwal" />
+        <input type="text" id="name" disabled />
       </div>
 
       <div class="form-group">
         <label>Email</label>
-        <input type="email" value="siddhi@example.com" disabled />
+        <input type="email" id="email" disabled />
       </div>
-    </section>
-
-    <!-- PASSWORD -->
-    <section class="form-card" style="margin-top:30px;">
-      <h3 class="section-title">Change Password</h3>
-
-      <div class="form-group">
-        <label>Current Password</label>
-        <input type="password" />
-      </div>
-
-      <div class="form-group">
-        <label>New Password</label>
-        <input type="password" />
-      </div>
-
-      <button class="btn-primary full-width">
-        Update Password
-      </button>
     </section>
 
     <!-- LOGOUT -->
     <section class="form-card" style="margin-top:30px; text-align:center;">
-      <button class="btn-outline">
-        Logout
-      </button>
+      <button class="btn-outline" onclick="logoutUser()">Logout</button>
     </section>
 
   </main>
 </div>
+
+<script src="js/config.js"></script>
+<script>
+/* protect page */
+if (!getToken()) {
+  window.location.href = "login.html";
+}
+
+/* load profile */
+fetch(`${API_BASE}/auth/me`, {
+  headers: {
+    Authorization: `Bearer ${getToken()}`
+  }
+})
+.then(res => res.json())
+.then(user => {
+  document.getElementById("name").value = user.name;
+  document.getElementById("email").value = user.email;
+});
+
+/* logout */
+function logoutUser() {
+  localStorage.removeItem("token");
+  window.location.href = "login.html";
+}
+</script>
 
 </body>
 </html>

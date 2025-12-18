@@ -38,24 +38,25 @@
     <!-- STATS -->
     <section class="stats">
       <div class="stat-card">
-        <h3>Total Links</h3>
-        <p>24</p>
-      </div>
+  <h3>Total Links</h3>
+  <p id="totalLinks">0</p>
+</div>
 
-      <div class="stat-card">
-        <h3>Active Links</h3>
-        <p>12</p>
-      </div>
+<div class="stat-card">
+  <h3>Active Links</h3>
+  <p id="activeLinks">0</p>
+</div>
 
-      <div class="stat-card">
-        <h3>Expired</h3>
-        <p>8</p>
-      </div>
+<div class="stat-card">
+  <h3>Expired</h3>
+  <p id="expiredLinks">0</p>
+</div>
 
-      <div class="stat-card">
-        <h3>Total Clicks</h3>
-        <p>1,245</p>
-      </div>
+<div class="stat-card">
+  <h3>Total Clicks</h3>
+  <p id="totalClicks">0</p>
+</div>
+
     </section>
 
     <!-- PLACEHOLDER CONTENT -->
@@ -69,3 +70,26 @@
 
 </body>
 </html>
+<!-- SAME HTML AS YOURS ABOVE -->
+
+<script src="js/config.js"></script>
+<script>
+protectPage();
+
+fetch(`${API_BASE}/dashboard`, {
+  headers: {
+    Authorization: `Bearer ${getToken()}`
+  }
+})
+.then(res => res.json())
+.then(data => {
+  console.log("Dashboard:", data);
+
+  document.getElementById("totalLinks").innerText = data.totalLinks;
+  document.getElementById("totalClicks").innerText = data.totalClicks;
+
+  // optional (agar backend bheje)
+  document.getElementById("activeLinks").innerText = data.activeLinks || 0;
+  document.getElementById("expiredLinks").innerText = data.expiredLinks || 0;
+});
+</script>

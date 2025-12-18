@@ -44,38 +44,9 @@
         <span>Actions</span>
       </div>
 
-      <div class="table-row">
-        <span>dmn.lk/secure123</span>
-        <span class="badge active">Active</span>
-        <span>124</span>
-        <span class="actions">
-          <button>Edit</button>
-          <button>Copy</button>
-          <button class="danger">Delete</button>
-        </span>
-      </div>
+      
 
-      <div class="table-row">
-        <span>dmn.lk/event</span>
-        <span class="badge scheduled">Scheduled</span>
-        <span>0</span>
-        <span class="actions">
-          <button>Edit</button>
-          <button>Copy</button>
-          <button class="danger">Delete</button>
-        </span>
-      </div>
-
-      <div class="table-row">
-        <span>dmn.lk/oldlink</span>
-        <span class="badge expired">Expired</span>
-        <span>342</span>
-        <span class="actions">
-          <button>Edit</button>
-          <button>Copy</button>
-          <button class="danger">Delete</button>
-        </span>
-      </div>
+     
 
     </div>
 
@@ -84,3 +55,60 @@
 
 </body>
 </html>
+<!-- SAME HTML -->
+
+<script src="js/config.js"></script>
+<script>
+protectPage();
+
+const table = document.querySelector(".table-card");
+
+fetch(`${API_BASE}/link/my`, {
+  headers: {
+    Authorization: `Bearer ${getToken()}`
+  }
+})
+.then(res => res.json())
+.then(links => {
+  console.log("My links:", links);
+
+  links.forEach(link => {
+    const row = document.createElement("div");
+    row.className = "table-row";
+
+   row.innerHTML = `
+  <span>dmn.lk/${link.shortCode}</span>
+  <span class="badge ${link.active ? "active" : "expired"}">
+    ${link.active ? "Active" : "Expired"}
+  </span>
+  <span>${link.clickCount || 0}</span>
+  <span class="actions">
+    <button onclick="editLink('${link._id}')">Edit</button>
+    <button onclick="copyLink('dmn.lk/${link.shortCode}')">Copy</button>
+    <button class="danger" onclick="deleteLink('${link._id}')">Delete</button>
+  </span>
+`;
+
+
+    table.appendChild(row);
+  });
+});
+function copyLink(text) {
+  navigator.clipboard.writeText(text);
+  alert("Link copied!");
+}
+
+function editLink(id) {
+  window.location.href = `edit-link.html?id=${id}`;
+}
+
+
+function deleteLink(id) {
+  fetch(`${API_BASE}/link/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${getToken()}`
+    }
+  }).then(() => location.reload());
+}
+</script>
